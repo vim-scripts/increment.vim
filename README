@@ -1,0 +1,29 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=145
+
+Sometimes you want to search for a string in the text 
+and add an auto incremented number to each occurence of the string. 
+Let's say, you want to make a numbered list. 
+You write something like:
+qwerty: The first line
+qwerty: the second one
+qwerty: and so on ...
+Then you type a command
+:let I=0
+followed by a replace command
+:%s/qwerty/\=INC(1)/
+The first 'qwerty' is replaced by number 1, 
+the second by number 2, and so on... .
+Sometimes you might want to generate numbers with a leadimg zeroes. 
+You simply initialize global variable I to value like 
+:let I=99890000
+then you make the replacement 
+:%s/my_token_word/\=INC(1)/g
+followed by
+:%s/9989//g
+
+You have to initialize a global variable I 
+before the first use of INC() function,
+othervise the numbering will continue where it stopped 
+during the last replace.
+
+Text Pad has a very similar metacharacter for replacement - \i.
